@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Khunger — Software Developer</title>
+<meta name="description" content="Backend engineer building fraud prevention systems and AI agent workflows. Java, Spring Boot, Kafka, and multi-agent LLM systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f7f6;
+    --paper-deep: #eceeed;
+    --ink: #101816;
+    --ink-soft: #44514c;
+    --ink-faint: #76837e;
+    --pine: #0b6b4f;
+    --amber: #c07a1d;
+    --rule: #d4dad7;
+    --measure: 74ch;
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #111715;
+    --paper-deep: #1a211e;
+    --ink: #e8edeb;
+    --ink-soft: #aab6b1;
+    --ink-faint: #71807a;
+    --pine: #43b890;
+    --amber: #d99a45;
+    --rule: #2a332f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-variation-settings: "wdth" 100;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 200ms ease, color 200ms ease;
+  }
+
+  ::selection { background: var(--pine); color: var(--paper); }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- top bar ---------- */
+  header.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 28px 0 0;
+  }
+  header.top .mark {
+    font-variation-settings: "wdth" 116;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+  .toptools { display: flex; align-items: baseline; gap: 22px; }
+  nav.toplinks { display: flex; gap: 22px; }
+  .theme-toggle {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .theme-toggle:hover { color: var(--pine); border-color: var(--pine); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+  nav.toplinks a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  nav.toplinks a:hover { color: var(--ink); border-bottom-color: var(--pine); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 96px 0 64px; }
+  .hero .eyebrow { color: var(--pine); margin-bottom: 22px; }
+  .hero h1 {
+    font-variation-settings: "wdth" 122;
+    font-weight: 740;
+    font-size: clamp(2.6rem, 7.2vw, 5.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    max-width: 14ch;
+  }
+  .hero .statement {
+    margin-top: 34px;
+    max-width: 56ch;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .hero .statement strong { color: var(--ink); font-weight: 600; }
+  .hero .meta {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    color: var(--ink-faint);
+  }
+  .hero .meta a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .hero .meta a:hover { color: var(--pine); border-bottom-color: var(--pine); }
+
+  /* ---------- readout (signature) ---------- */
+  .readout {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    background:
+      repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 25%)
+      bottom / 100% 7px no-repeat,
+      var(--paper);
+  }
+  .readout .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .readout .cell {
+    padding: 30px 26px 36px 0;
+  }
+  .readout .cell + .cell { padding-left: 26px; border-left: 1px solid var(--rule); }
+  .readout .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    font-weight: 500;
+    color: var(--pine);
+    letter-spacing: -0.03em;
+  }
+  .readout .num .unit { font-size: 0.55em; color: var(--ink-faint); letter-spacing: 0; }
+  .readout .lbl { margin-top: 8px; color: var(--ink-soft); font-size: 0.85rem; line-height: 1.45; }
+  .readout .src {
+    padding: 10px 0 26px;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 76px 0 8px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 12px;
+    margin-bottom: 44px;
+  }
+  .sec-head h2 {
+    font-variation-settings: "wdth" 116;
+    font-weight: 680;
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .sec-head .mono { color: var(--ink-faint); }
+
+  /* ---------- experience ---------- */
+  .role {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+  }
+  .role .where { color: var(--ink-soft); }
+  .role .where .org { color: var(--ink); font-weight: 600; font-size: 1.05rem; }
+  .role .where .title { margin-top: 4px; }
+  .role .where .dates { margin-top: 14px; color: var(--ink-faint); }
+  .role .what { max-width: var(--measure); }
+  .role .what > p { color: var(--ink-soft); margin-bottom: 28px; }
+
+  .highlight { 
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 20px;
+  }
+  .highlight:last-child { border-bottom: 1px solid var(--rule); }
+  .highlight .figure {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-weight: 500;
+    color: var(--pine);
+    font-size: 1.05rem;
+    padding-top: 2px;
+  }
+  .highlight .figure.neutral { color: var(--amber); }
+  .highlight p { color: var(--ink-soft); font-size: 0.98rem; }
+  .highlight p strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- project ---------- */
+  .project { display: grid; grid-template-columns: 240px 1fr; gap: 40px; }
+  .project .side, .project .body, .role .what, .stackrow .v { min-width: 0; }
+  .project .side .name { font-weight: 600; font-size: 1.05rem; max-width: 16ch; }
+  .project .side .stack { margin-top: 14px; color: var(--ink-faint); line-height: 2; }
+  .project .body { max-width: var(--measure); }
+  .project .body p { color: var(--ink-soft); margin-bottom: 18px; }
+  .project .body p strong { color: var(--ink); font-weight: 600; }
+
+  .pipeline {
+    margin: 30px 0 10px;
+    border: 1px solid var(--rule);
+    background: var(--paper-deep);
+    padding: 22px 24px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    line-height: 1.9;
+    white-space: pre;
+    color: var(--ink-soft);
+    overflow-x: auto;
+  }
+  .pipeline b { color: var(--pine); font-weight: 500; }
+  .pipeline .dim { color: var(--ink-faint); }
+
+  /* ---------- stack ---------- */
+  .stackrows { max-width: 860px; }
+  .stackrow {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .stackrow:last-child { border-bottom: 1px solid var(--rule); }
+  .stackrow .k { color: var(--ink-faint); padding-top: 3px; }
+  .stackrow .v { color: var(--ink-soft); }
+  .stackrow .v em { font-style: normal; color: var(--ink); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+  footer { padding: 90px 0 60px; }
+  footer .cta {
+    font-variation-settings: "wdth" 120;
+    font-weight: 720;
+    text-transform: uppercase;
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+  }
+  footer .cta a {
+    text-decoration: none;
+    color: var(--pine);
+    border-bottom: 3px solid var(--pine);
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  footer .cta a:hover { color: var(--ink); border-color: var(--ink); }
+  footer .cols {
+    margin-top: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  footer .cols a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  footer .cols a:hover { color: var(--pine); border-bottom-color: var(--pine); }
+  footer .edu { margin-top: 8px; color: var(--ink-soft); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 820px) {
+    .readout .grid { grid-template-columns: 1fr 1fr; }
+    .readout .cell:nth-child(3) { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); }
+    .readout .cell:nth-child(4) { border-top: 1px solid var(--rule); }
+    .role, .project, .stackrow { grid-template-columns: 1fr; gap: 14px; }
+    .role .where .dates { margin-top: 6px; }
+    .stackrow { gap: 4px; }
+  }
+  @media (max-width: 520px) {
+    nav.toplinks { display: none; }
+    header.top { align-items: center; }
+    .hero { padding: 72px 0 48px; }
+    .highlight { grid-template-columns: 1fr; gap: 6px; }
+    .pipeline { font-size: 0.66rem; padding: 16px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="mark">Aditya Khunger</div>
+    <div class="toptools">
+      <nav class="toplinks mono" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#project">Project</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow mono">Software Developer · Chandigarh, India</p>
+    <h1>I build the systems that catch fraud.</h1>
+    <p class="statement">
+      Backend engineer at <strong>Wio Bank</strong>, working on real-time fraud prevention,
+      dispute automation, and the messy payment flows in between. Lately: building
+      <strong>multi-agent LLM systems</strong> that read entire codebases so humans don't have to.
+    </p>
+    <div class="meta mono">
+      <span>Java / Spring Boot</span>
+      <span>Kafka</span>
+      <span>MongoDB · Redis · Qdrant</span>
+      <a href="https://www.linkedin.com/in/adityakhunger" rel="me">LinkedIn</a>
+    </div>
+  </section>
+
+  <div class="readout" role="group" aria-label="Results from production systems">
+    <div class="wrap-inner">
+      <div class="grid">
+        <div class="cell">
+          <div class="num">−75<span class="unit">%</span></div>
+          <p class="lbl">fraud incidence after the remediation platform shipped</p>
+        </div>
+        <div class="cell">
+          <div class="num">−90<span class="unit">%</span></div>
+          <p class="lbl">time to resolve a card transaction dispute</p>
+        </div>
+        <div class="cell">
+          <div class="num">3<span class="unit">×</span></div>
+          <p class="lbl">dispute volume handled with the same headcount</p>
+        </div>
+        <div class="cell">
+          <div class="num">−65<span class="unit">%</span></div>
+          <p class="lbl">analyst workload across fraud and disputes</p>
+        </div>
+      </div>
+      <p class="src mono">Measured in production · Wio Bank · 2023–present</p>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <h2>Work</h2>
+      <span class="mono">Jan 2023 — Present</span>
+    </div>
+
+    <div class="role">
+      <div class="where">
+        <div class="org">Wio Bank</div>
+        <div class="title">Mid Software Developer</div>
+        <div class="dates mono">Gurugram, India</div>
+      </div>
+      <div class="what">
+        <p>
+          I joined the fraud and disputes side of the bank when much of it still ran on
+          manual review. Most of my time since has gone into replacing those queues with
+          systems that decide, act, and explain themselves — and into the monitoring that
+          keeps them honest.
+        </p>
+
+        <div class="highlight">
+          <div class="figure">−75%</div>
+          <p><strong>Fraud remediation platform.</strong> Real-time adaptive questionnaires and dynamic
+          account controls that respond to suspicious activity as it happens. Cut fraud incidence
+          by roughly three quarters and removed ~60% of manual fraud review.</p>
+        </div>
+
+        <div class="highlight">
+          <div class="figure">−90%</div>
+          <p><strong>Chargeback automation.</strong> End-to-end card dispute processing with AI-driven
+          fintech integrations. Resolution time dropped 90%, and the same team now absorbs
+          three times the dispute volume.</p>
+        </div>
+
+        <div class="highlight">
+          <div class="figure neutral">0→1</div>
+          <p><strong>Fraud detection backend.</strong> Designed from scratch by mapping payment and card
+          transaction flows across teams, then choosing API integration points where detection
+          accuracy would be highest.</p>
+        </div>
+
+        <div class="highlight">
+          <div class="figure">−40%</div>
+          <p><strong>KYC/AML screening.</strong> Revamped customer screening with third-party data
+          sources and rule-based automation — better compliance accuracy, 40% less manual review.</p>
+        </div>
+
+        <div class="highlight">
+          <div class="figure neutral">24/7</div>
+          <p><strong>Observability.</strong> Dashboards and alerting for API latency, Kafka consumer
+          lag, and transaction queues, built on the ELK Stack and Grafana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="sec-head">
+      <h2>Personal Project</h2>
+      <span class="mono">Multi-agent systems</span>
+    </div>
+
+    <div class="project">
+      <div class="side">
+        <div class="name">Multi-Agent Codebase Intelligence System</div>
+        <div class="stack mono">
+          Python<br>
+          Anthropic API<br>
+          Qdrant
+        </div>
+      </div>
+      <div class="body">
+        <p>
+          A distributed codebase is hard to hold in one head. This system holds it instead:
+          the source of every microservice is indexed into a <strong>Qdrant vector database</strong>
+          for semantic retrieval across service boundaries.
+        </p>
+        <p>
+          Ask it a question in plain language and an <strong>orchestrator agent</strong> spawns
+          seven to eight parallel sub-agents, each searching the vector store iteratively until
+          it has the full picture of its slice of the code. Their summaries flow back to the
+          orchestrator, which composes a grounded answer — and asks the user a clarifying
+          question when it hits genuine ambiguity rather than guessing.
+        </p>
+        <div class="pipeline" aria-label="How the system works">
+<span class="dim">query</span> ──▶ <b>orchestrator</b> ──▶ 7–8 sub-agents <span class="dim">(parallel)</span>
+                    │         iterative search · Qdrant
+                    │ ◀────── code summaries
+<b>grounded answer</b> ◀──┘ <span class="dim">or: clarifying question → user</span></div>
+        <p>
+          In practice it earns its keep grooming PRDs, generating Jira tasks, and producing
+          technical documentation straight from the live codebase instead of stale wikis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head">
+      <h2>Stack</h2>
+      <span class="mono">Tools in rotation</span>
+    </div>
+
+    <div class="stackrows">
+      <div class="stackrow">
+        <div class="k mono">Languages</div>
+        <div class="v"><em>Java</em>, <em>Python</em></div>
+      </div>
+      <div class="stackrow">
+        <div class="k mono">Backend</div>
+        <div class="v"><em>Spring Boot</em>, Docker, Kubernetes, Git, Azure DevOps</div>
+      </div>
+      <div class="stackrow">
+        <div class="k mono">Data &amp; Streaming</div>
+        <div class="v"><em>Apache Kafka</em>, MongoDB, Redis, Qdrant, ELK Stack, Grafana</div>
+      </div>
+      <div class="stackrow">
+        <div class="k mono">AI Tooling</div>
+        <div class="v"><em>Multi-agent orchestration</em>, RAG, Anthropic API, Claude Code, Cursor, Windsurf</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="cta">Working on fraud, payments, or agents?
+      <a href="https://www.linkedin.com/in/adityakhunger">Let's connect.</a>
+    </p>
+    <div class="cols mono">
+      <a href="https://www.linkedin.com/in/adityakhunger">linkedin.com/in/adityakhunger</a>
+      <a href="mailto:khungeraditya@gmail.com">khungeraditya@gmail.com</a>
+      <a href="tel:+918168044298">+91 81680 44298</a>
+      <span>Chandigarh, India</span>
+    </div>
+    <p class="edu">
+      B.E. Computer Science, Chitkara University — GPA 9.9/10, Distinction (2020–2024).
+      Off the clock: tennis and Himalayan trekking.
+    </p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+
+  function stored() {
+    try { return localStorage.getItem('theme'); } catch (e) { return null; }
+  }
+  function save(t) {
+    try { localStorage.setItem('theme', t); } catch (e) {}
+  }
+  function apply(t) {
+    if (t === 'dark') { root.setAttribute('data-theme', 'dark'); }
+    else { root.removeAttribute('data-theme'); }
+    btn.textContent = t === 'dark' ? 'Light' : 'Dark';
+    btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+  }
+
+  var pref = stored();
+  if (!pref && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    pref = 'dark';
+  }
+  apply(pref === 'dark' ? 'dark' : 'light');
+
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    save(next);
+  });
+})();
+</script>
+</body>
+</html>
